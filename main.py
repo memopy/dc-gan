@@ -17,7 +17,6 @@ class Generator(nn.Module):
         self.block3 = self.create_block(512,256,4,2,1)
         self.block4 = self.create_block(256,128,4,2,1)
         self.block5 = nn.Sequential(nn.ConvTranspose2d(128,3,4,2,1),nn.BatchNorm2d(3),nn.Tanh())
-        self.generator = nn.Sequential(self.block1,self.block2,self.block3,self.block4,self.block5)
 
     def create_block(self,in_f,out_f,kernel,stride,pad):
         deconv = nn.ConvTranspose2d(in_f,out_f,kernel,stride,pad)
